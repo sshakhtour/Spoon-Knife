@@ -46,14 +46,9 @@ $('.form-custom-actions').addClass('card-div');
 
 $('button#btn-next').click(function(){     
     var url = '{{ sitemarkers["PlanContractInfo"].url }}' + window.location.search;
-    // Sanitize the URL
-    var sanitizedUrl = url.replace(/[^a-z0-9-_\/]/gi, '');
-    // Validate the URL
-    if (sanitizedUrl.startsWith('http://') || sanitizedUrl.startsWith('https://')) {
-        console.error('Invalid URL: ' + sanitizedUrl);
-        return;
-    }
-    window.location.href = sanitizedUrl;
+    // Encode the URL
+    var encodedUrl = encodeURI(url);
+    window.location.href = encodedUrl;
 })
 
 
